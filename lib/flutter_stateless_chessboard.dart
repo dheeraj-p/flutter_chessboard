@@ -33,8 +33,6 @@ class Chessboard extends StatefulWidget {
 }
 
 class _ChessboardState extends State<Chessboard> {
-  types.HalfMove _clickMove;
-
   @override
   Widget build(BuildContext context) {
     final squareSize = widget.size / 8;
@@ -56,44 +54,12 @@ class _ChessboardState extends State<Chessboard> {
                 name: square,
                 color: color,
                 size: squareSize,
-                highlight: _clickMove?.square == square,
                 piece: pieceMap[square],
-                onDrop: (move) {
-                  if (widget.onMove != null) {
-                    widget.onMove(move);
-                    setClickMove(null);
-                  }
-                },
-                onClick: (halfMove) {
-                  if (_clickMove != null) {
-                    if (_clickMove.square == halfMove.square) {
-                      setClickMove(null);
-                    } else if (_clickMove.piece.color ==
-                        halfMove.piece?.color) {
-                      setClickMove(halfMove);
-                    } else {
-                      widget.onMove(types.ShortMove(
-                        from: _clickMove.square,
-                        to: halfMove.square,
-                        promotion: types.PieceType.QUEEN,
-                      ));
-                    }
-                    setClickMove(null);
-                  } else if (halfMove.piece != null) {
-                    setClickMove(halfMove);
-                  }
-                },
               );
             }).toList(),
           );
         }).toList(),
       ),
     );
-  }
-
-  void setClickMove(types.HalfMove move) {
-    setState(() {
-      _clickMove = move;
-    });
   }
 }
