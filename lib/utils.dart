@@ -1,5 +1,5 @@
 import 'package:chess/chess.dart' as ch;
-import 'package:flutter_stateless_chessboard/types.dart';
+import 'package:flutter_chessboard/types.dart';
 
 String getSquare(int rankIndex, int fileIndex, Color orientation) {
   final rank = orientation == Color.BLACK ? rankIndex + 1 : 8 - rankIndex;

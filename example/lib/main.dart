@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stateless_chessboard/flutter_stateless_chessboard.dart' as cb;
+import 'package:flutter_chessboard/chessboard.dart' as cb;
 
 import 'utils.dart';
 
