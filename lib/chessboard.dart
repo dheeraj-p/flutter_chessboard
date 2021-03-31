@@ -47,8 +47,8 @@ class _ChessboardState extends State<Chessboard> {
         itemBuilder: (context, index) {
           final int fileIndex = index % 8;
           final num rankIndex = index / 8;
-          final square = getSquare(rankIndex, fileIndex, widget.orientation);
-          final color = (rankIndex + fileIndex) % 2 == 0
+          final square = getSquare(rankIndex.floor(), fileIndex, widget.orientation);
+          final color = (rankIndex.floor() + fileIndex) % 2 == 0
               ? widget.lightSquareColor
               : widget.darkSquareColor;
           return ChessSquare(
