@@ -13,7 +13,6 @@ class Chessboard extends StatefulWidget {
   final String fen;
   final double size;
   final types.Color orientation;
-  final void Function(types.ShortMove move) onMove;
   final Color lightSquareColor;
   final Color darkSquareColor;
 
@@ -21,7 +20,6 @@ class Chessboard extends StatefulWidget {
     @required this.fen,
     @required this.size,
     this.orientation = types.Color.WHITE,
-    this.onMove,
     this.lightSquareColor = const Color.fromRGBO(240, 217, 181, 1),
     this.darkSquareColor = const Color.fromRGBO(181, 136, 99, 1),
   });
@@ -41,24 +39,25 @@ class _ChessboardState extends State<Chessboard> {
     return Container(
       width: widget.size,
       height: widget.size,
-      child: Row(
-        children: zeroToSeven.map((fileIndex) {
-          return Column(
-            children: zeroToSeven.map((rankIndex) {
-              final square =
-                  getSquare(rankIndex, fileIndex, widget.orientation);
-              final color = (rankIndex + fileIndex) % 2 == 0
-                  ? widget.lightSquareColor
-                  : widget.darkSquareColor;
-              return ChessSquare(
-                name: square,
-                color: color,
-                size: squareSize,
-                piece: pieceMap[square],
-              );
-            }).toList(),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 8,
+        ),
+        itemCount: 64,
+        itemBuilder: (context, index) {
+          final int fileIndex = index % 8;
+          final num rankIndex = index / 8;
+          final square = getSquare(rankIndex, fileIndex, widget.orientation);
+          final color = (rankIndex + fileIndex) % 2 == 0
+              ? widget.lightSquareColor
+              : widget.darkSquareColor;
+          return ChessSquare(
+            name: square,
+            color: color,
+            size: squareSize,
+            piece: pieceMap[square],
           );
-        }).toList(),
+        },
       ),
     );
   }

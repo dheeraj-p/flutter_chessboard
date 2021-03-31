@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_chessboard/chessboard.dart' as cb;
 
-import 'utils.dart';
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -27,29 +25,6 @@ class _HomePageState extends State<HomePage> {
           fen: _fen,
           size: size,
           orientation: cb.Color.WHITE,
-          onMove: (move) {
-            final nextFen = makeMove(_fen, {
-              'from': move.from,
-              'to': move.to,
-              'promotion': 'q',
-            });
-
-            if (nextFen != null) {
-              setState(() {
-                _fen = nextFen;
-              });
-
-              Future.delayed(Duration(milliseconds: 300)).then((_) {
-                final nextMove = getRandomMove(_fen);
-
-                if (nextMove != null) {
-                  setState(() {
-                    _fen = makeMove(_fen, nextMove);
-                  });
-                }
-              });
-            }
-          },
         ),
       ),
     );
