@@ -1,17 +1,17 @@
 name: flutter_chessboard
 description: A Chessboard Widget for Flutter. This package provides just the chessboard. The game logic can be implemented using chess library.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/dheeraj-p/flutter_chessboard
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.0.5"
+  flutter: ">=3.10.5"
 
 dependencies:
   flutter:
     sdk: flutter
   chess_vectors_flutter: ^1.0.12
-  chess: ^0.6.6
+  chess: ^0.8.0
 
 dev_dependencies:
   flutter_test:

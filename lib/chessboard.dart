@@ -17,8 +17,8 @@ class Chessboard extends StatefulWidget {
   final Color darkSquareColor;
 
   Chessboard({
-    @required this.fen,
-    @required this.size,
+    required this.fen,
+    required this.size,
     this.orientation = types.Color.WHITE,
     this.lightSquareColor = const Color.fromRGBO(240, 217, 181, 1),
     this.darkSquareColor = const Color.fromRGBO(181, 136, 99, 1),
@@ -55,7 +55,7 @@ class _ChessboardState extends State<Chessboard> {
             name: square,
             color: color,
             size: squareSize,
-            piece: pieceMap[square],
+            piece: pieceMap[square]!,
           );
         },
       ),

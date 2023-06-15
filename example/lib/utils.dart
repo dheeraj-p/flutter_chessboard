@@ -7,7 +7,7 @@ String makeMove(String fen, dynamic move) {
     return chess.fen;
   }
 
-  return null;
+  return "";
 }
 
 String getRandomMove(String fen) {
@@ -16,7 +16,7 @@ String getRandomMove(String fen) {
   final moves = chess.moves();
 
   if (moves.isEmpty) {
-    return null;
+    return "";
   }
 
   moves.shuffle();

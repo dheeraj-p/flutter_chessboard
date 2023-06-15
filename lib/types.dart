@@ -72,9 +72,9 @@ class PieceType {
 }
 
 class ShortMove {
-  final String from;
-  final String to;
-  final PieceType promotion;
+  final String? from;
+  final String? to;
+  final PieceType? promotion;
 
   ShortMove({this.from, this.to, this.promotion});
 }
